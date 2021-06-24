@@ -1,0 +1,107 @@
+/* General */
+body {
+  font-size: 0.875rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  background-color: #f7f7f7;
+  color: #1e1100;
+}
+
+h1 {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+}
+
+legend {
+  float: unset;
+}
+
+.form-select,
+.form-check-input {
+  background-color: #f7f7f7;
+}
+
+.chart-container {
+  position: relative;
+}
+
+/* Flow legend */
+.flow-legend {
+  font-size: 0.75rem;
+}
+
+.flow-legend__tick > line {
+  stroke: #ccc;
+}
+
+.flow-legend__flow > line {
+  stroke: currentColor;
+}
+
+/* Flow map */
+.flow-map > svg {
+  display: block;
+  overflow: visible;
+}
+
+.flow-map .locations-g {
+  fill: none;
+  stroke: #ccc;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.flow-map .label-text {
+  font-size: 0.675rem;
+}
+
+.flow-map .label-text--halo {
+  stroke: #f7f7f7;
+  stroke-width: 3px;
+}
+
+.flow-map .flow-arrow-path {
+  fill: none;
+  stroke: currentColor;
+}
+
+.flow-map .flow-hits-g {
+  opacity: 0;
+}
+
+.flow-map .flow-hit-use {
+  stroke-width: 8px;
+}
+
+.flow-map .flow-flow-use,
+.flow-map .flow-arrow-use {
+  transition: opacity 0.15s;
+}
+
+/* Flow pie */
+.flow-pie__outline {
+  stroke: #ccc;
+  fill: none;
+}
+
+/* Tooltip */
+.tooltip-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 0.75rem;
+  background-color: #fff;
+  pointer-events: none;
+  width: 240px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.tooltip-container.is-visible {
+  opacity: 1;
+}
+
+.tooltip-container .flow-value {
+  font-size: 1rem;
+  font-weight: bold;
+}

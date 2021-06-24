@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>State-to-State Migration Flows</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <!-- Google Fonts CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Oswald:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body class="p-3 py-md-5 container-xl">
+    <main>
+      <h1 class="h3 mb-5 text-uppercase">
+        United States State-to-State Migration Flows
+      </h1>
+      <div class="row g-3 mb-3">
+        <div class="col-md-auto" id="state-control"></div>
+        <div class="col-md-auto" id="direction-control"></div>
+        <div class="col-md-auto" id="display-control"></div>
+        <div class="col"></div>
+        <div class="col-md-auto legend-container" id="flow-legend"></div>
+      </div>
+      <div class="chart-container" id="flow-map"></div>
+    </main>
+    <footer class="pt-5 my-5 text-muted border-top">
+      <ul class="list-unstyled">
+        <li>
+          Data source:
+          <a
+            href="https://www.census.gov/data/tables/time-series/demo/geographic-mobility/state-to-state-migration.html"
+            >United States Census Bureau State-to-State Migration Flows 2019</a
+          >
+        </li>
+        <li>
+          Visualization inspiration:
+          <a href="https://resourcetrade.earth/"
+            >Chatham House ResourceTrade.Earth</a
+          >
+        </li>
+      </ul>
+    </footer>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+    <!-- D3 JS -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- Topojson JS -->
+    <script src="https://unpkg.com/topojson@3"></script>
+    <!-- ArcToBezier JS -->
+    <script src="https://unpkg.com/svg-arc-to-cubic-bezier@3.2.0/dist/svg-points-to-cubic-bezier.min.js"></script>
+    <!-- Bezier JS -->
+    <script src="js/bezier.js"></script>
+    <!-- JS -->
+    <script src="js/process-data.js"></script>
+    <script src="js/select-control.js"></script>
+    <script src="js/radios-control.js"></script>
+    <script src="js/flow-tooltip.js"></script>
+    <script src="js/flow-pie.js"></script>
+    <script src="js/flow-map.js"></script>
+    <script src="js/flow-legend.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
