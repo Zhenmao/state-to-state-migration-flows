@@ -63,18 +63,18 @@ class FlowMap {
 
     this.featureCollection = topojson.feature(
       this.topo,
-      this.topo.objects[this.topoFeatureObject]
+      this.topo.objects[this.topoFeatureObject],
     );
     const featureById = new Map(
-      this.featureCollection.features.map((feature) => [feature.id, feature])
+      this.featureCollection.features.map((feature) => [feature.id, feature]),
     );
     this.locations = this.data.nodes.map((d) =>
       Object.assign(
         {
           feature: featureById.get(d.id),
         },
-        d
-      )
+        d,
+      ),
     );
     this.locationById = new Map(this.locations.map((d) => [d.id, d]));
   }
@@ -83,7 +83,7 @@ class FlowMap {
     this.width = this.container.node().clientWidth;
     this.height = Math.min(
       this.topoHeight,
-      Math.ceil((this.width / this.topoWidth) * this.topoHeight)
+      Math.ceil((this.width / this.topoWidth) * this.topoHeight),
     );
 
     this.projection.fitSize([this.width, this.height], this.featureCollection);
@@ -158,7 +158,7 @@ class FlowMap {
           .attr("x1", 0)
           .attr("y1", 0)
           .attr("x2", 1)
-          .attr("y2", 0)
+          .attr("y2", 0),
       )
       .attr("gradientTransform", (d) => {
         const dx = d.target.x - d.source.x;
@@ -187,17 +187,19 @@ class FlowMap {
               .attr("class", "flow-arrow-path")
               .attr("id", (d) => `flow-arrow-path-${d.id}`)
               .attr("marker-end", "url(#flow-arrowhead)")
+              .attr("fill", "none")
+              .attr("stroke", "currentColor"),
           )
           .call((g) =>
-            g.append("path").attr("id", (d) => `flow-flow-path-${d.id}`)
-          )
+            g.append("path").attr("id", (d) => `flow-flow-path-${d.id}`),
+          ),
       )
       .each((d, i, ns) => {
         const points = this.calculateBezierCurvePoints(
           d.source.x,
           d.source.y,
           d.target.x,
-          d.target.y
+          d.target.y,
         );
         const curve = new bezier.Bezier(...points);
         const length = curve.length();
@@ -207,12 +209,12 @@ class FlowMap {
         const arrowOffset = 4;
 
         const arrowCurve = curve.split(
-          (length - offset - arrowOffset) / length
+          (length - offset - arrowOffset) / length,
         ).left;
         const arrowPath = this.bezierToString(arrowCurve.points, true);
 
         const flowCurve = curve.split(
-          (length - offset - flowRadius) / length
+          (length - offset - flowRadius) / length,
         ).left;
         const flowOutline = flowCurve.outline(0, 0, flowRadius, flowRadius);
         const flowTangent = flowCurve.derivative(1);
@@ -259,7 +261,7 @@ class FlowMap {
               .attr("class", "label-text label-text--halo")
               .attr("text-anchor", "middle")
               .attr("dy", "0.32em")
-              .text((d) => d.feature.properties.abbr)
+              .text((d) => d.feature.properties.abbr),
           )
           .call((g) =>
             g
@@ -267,8 +269,8 @@ class FlowMap {
               .attr("class", "label-text")
               .attr("text-anchor", "middle")
               .attr("dy", "0.32em")
-              .text((d) => d.feature.properties.abbr)
-          )
+              .text((d) => d.feature.properties.abbr),
+          ),
       )
       .attr("transform", (d) => `translate(${d.x},${d.y})`);
   }
@@ -279,7 +281,7 @@ class FlowMap {
       .selectAll(".locations-features-path")
       .data([0])
       .join((enter) =>
-        enter.append("path").attr("class", "locations-features-path")
+        enter.append("path").attr("class", "locations-features-path"),
       )
       .attr("d", this.path(this.merged));
   }
@@ -294,7 +296,7 @@ class FlowMap {
           .append("use")
           .attr("class", "flow-flow-use")
           .attr("href", (d) => `#flow-flow-path-${d.id}`)
-          .attr("fill", (d) => `url(#flow-gradient-${d.id})`)
+          .attr("fill", (d) => `url(#flow-gradient-${d.id})`),
       );
   }
 
@@ -307,7 +309,7 @@ class FlowMap {
         enter
           .append("use")
           .attr("class", "flow-arrow-use")
-          .attr("href", (d) => `#flow-arrow-path-${d.id}`)
+          .attr("href", (d) => `#flow-arrow-path-${d.id}`),
       );
   }
 
@@ -331,7 +333,7 @@ class FlowMap {
           })
           .on("mousemove", (event, d) => {
             this.tooltip.move(event);
-          })
+          }),
       );
   }
 
@@ -344,7 +346,7 @@ class FlowMap {
         enter
           .append("use")
           .attr("class", "label-use")
-          .attr("href", (d) => `#label-${d.id}`)
+          .attr("href", (d) => `#label-${d.id}`),
       );
   }
 
@@ -409,7 +411,7 @@ class FlowMap {
           points[2].x,
           points[2].y,
           points[3].x,
-          points[3].y
+          points[3].y,
         );
         break;
     }
